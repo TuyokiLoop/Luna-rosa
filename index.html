@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para el amor de mi vida Magaly 🌸</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, #110221 0%, #000000 100%);
+            color: #ffe0ed;
+            font-family: 'Verdana', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: transparent;
+            z-index: 0;
+        }
+
+        .moon-real {
+            width: 280px;
+            height: 280px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg');
+            background-size: cover;
+            border-radius: 50%;
+            position: fixed;
+            top: 8%;
+            filter: sepia(100%) hue-rotate(280deg) brightness(1.1) saturate(1.7);
+            box-shadow: 0 0 70px 25px rgba(255, 150, 200, 0.5);
+            z-index: 1;
+        }
+
+        .container {
+            z-index: 2;
+            text-align: center;
+            background: rgba(15, 0, 30, 0.85);
+            padding: 50px 40px;
+            border-radius: 25px;
+            backdrop-filter: blur(8px);
+            border: 2px solid #ff96c8;
+            max-width: 600px;
+            margin-top: 180px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 40px rgba(255, 150, 200, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #ff96c8;
+            text-shadow: 0 0 15px #ff96c8;
+            margin-bottom: 10px;
+        }
+
+        .dedication-name {
+            font-size: 1.2em;
+            color: #ffffff;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 1.15em;
+            line-height: 2;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .flower {
+            font-size: 40px;
+            display: inline-block;
+            animation: sway 4s ease-in-out infinite;
+            margin: 0 10px;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-8deg) translateY(0px); }
+            50% { transform: rotate(8deg) translateY(-5px); }
+        }
+
+        .sparkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: blink 2.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        #music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+            background: rgba(255, 150, 200, 0.2);
+            border: 1px solid #ff96c8;
+            color: #ff96c8;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.8em;
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars" id="starField"></div>
+    <div class="moon-real"></div>
+
+    <button id="music-control">🎵 Activar Música</button>
+
+    <div class="container">
+        <h1>Bajo la misma luna :3</h1>
+        <span class="dedication-name">Para: Magaly, la flor mas bella de mi vida</span>
+        
+        <div class="flower">🌸</div>
+        
+        <p>
+            La luna hoy se viste de gala y de flores,<br>
+            buscando en el cielo un tono rosado,<br>
+            pero yo no busco en el cosmos colores<br>
+            si tengo en la tierra a mi flor a mi lado.
+        </p>
+        <p>
+            Tú eres mi brote, mi sol, mi alegría,<br>
+            la flor más hermosa que el tiempo me dio,<br>
+            la que cuido en mi mente de noche y de día,<br>
+            la que en este pecho por fin floreció.
+        </p>
+        <p>
+            No importa que el mundo hoy mire hacia arriba,<br>
+            buscando un reflejo de luz y de calma,<br>
+            yo solo te miro, mi flor siempre viva,<br>
+            porque tú eres el polen que sana mi alma.
+        </p>
+        <p>
+            Que esta Luna Rosa te lleve un mensaje,<br>
+            cruzando fronteras, distancias y vientos:<br>
+            que no hay en la tierra mejor paisaje<br>
+            que el jardín que sembraste en mis sentimientos.
+        </p>
+
+        <p> Te amo mucho mi magaly, 
+            y aunque la distancia sea mucha entre ambos, siempre recuerda
+            que mientras estemos debajo de la misma luna y las estrellas
+            siempre habra alguien que te ame por lo que eres amor.🌸</p>
+
+        <div class="flower">🌸</div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="caja musical.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        const starField = document.getElementById('starField');
+        const numStars = 120;
+        const music = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-control');
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'sparkle';
+            const size = Math.random() * 3.5 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 2.5 + 's';
+            if (i % 5 === 0) star.style.background = '#ffb7d5';
+            starField.appendChild(star);
+        }
+
+        musicBtn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                musicBtn.textContent = '⏸ Pausar Música';
+            } else {
+                music.pause();
+                musicBtn.textContent = '🎵 Activar Música';
+            }
+        });
+    </script>
+</body>
+</html>
